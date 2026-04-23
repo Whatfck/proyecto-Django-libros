@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+import shutil
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-v)tm(qlu_epnligp=@wk!a&p7vmmz%^6n&u$kc5wzr@rox48yo')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+VERCEL_DEPLOYMENT = config('VERCEL', default='0') == '1'
+DEBUG = config('DEBUG', default=not VERCEL_DEPLOYMENT, cast=bool)
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -81,12 +83,34 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DATABASE_URL = config('DATABASE_URL', default='')
+
+if DATABASE_URL:
+    import dj_database_url
+
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600),
     }
-}
+elif VERCEL_DEPLOYMENT:
+    runtime_db_path = Path('/tmp/db.sqlite3')
+    source_db_path = BASE_DIR / 'db.sqlite3'
+
+    if source_db_path.exists() and not runtime_db_path.exists():
+        shutil.copy2(source_db_path, runtime_db_path)
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': runtime_db_path,
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
