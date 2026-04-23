@@ -5,7 +5,7 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="fw-bold mb-0">Libros</h1>
-    <a href="{% url 'crear_libro' %}" class="btn btn-primary">
+    <a href="{% url 'gestion:crear_libro' %}" class="btn btn-primary">
         <i class="bi bi-book"></i> Agregar Libro
     </a>
 </div>
@@ -29,8 +29,8 @@
                 <td><code>{{ libro.isbn }}</code></td>
                 <td>{{ libro.autor.nombre }}</td>
                 <td class="text-end">
-                    <a href="{% url 'editar_libro' libro.pk %}" class="btn btn-sm btn-outline-info me-2">Editar</a>
-                    <a href="{% url 'eliminar_libro' libro.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                    <a href="{% url 'gestion:editar_libro' libro.pk %}" class="btn btn-sm btn-outline-info me-2">Editar</a>
+                    <a href="{% url 'gestion:eliminar_libro' libro.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
                 </td>
             </tr>
             {% empty %}
