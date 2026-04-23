@@ -1,0 +1,89 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Inicio - BiblioteK{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 2rem;">
+    <h1 class="display-4 fw-bold mb-4">📚 BiblioteK</h1>
+    <p class="lead text-muted mb-5">Sistema de Gestión de Autores y Libros</p>
+    
+    <div class="row g-4 mb-5">
+        <div class="col-md-6">
+            <div class="glass-card p-5" style="min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
+                <h2 class="text-primary mb-3">
+                    <i class="bi bi-person-circle" style="font-size: 2.5rem;"></i>
+                </h2>
+                <h3>Autores</h3>
+                <p class="fs-5 text-primary fw-bold">{{ autores_count }} registrados</p>
+                <div class="d-flex gap-2 justify-content-center mt-3">
+                    <a href="{% url 'gestion:lista_autores' %}" class="btn btn-primary">Ver Autores</a>
+                    <a href="{% url 'gestion:crear_autor' %}" class="btn btn-outline-primary">Agregar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="glass-card p-5" style="min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
+                <h2 class="text-success mb-3">
+                    <i class="bi bi-book" style="font-size: 2.5rem;"></i>
+                </h2>
+                <h3>Libros</h3>
+                <p class="fs-5 text-success fw-bold">{{ libros_count }} registrados</p>
+                <div class="d-flex gap-2 justify-content-center mt-3">
+                    <a href="{% url 'gestion:lista_libros' %}" class="btn btn-success">Ver Libros</a>
+                    <a href="{% url 'gestion:crear_libro' %}" class="btn btn-outline-success">Agregar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="glass-card p-4">
+                <h5 class="mb-3">✨ Funcionalidades</h5>
+                <ul class="list-unstyled text-start" style="font-size: 0.95rem;">
+                    <li>✅ Crear, editar y eliminar autores</li>
+                    <li>✅ Gestionar libros por autor</li>
+                    <li>✅ Panel administrativo completo</li>
+                    <li>✅ Interfaz moderna con Bootstrap</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="glass-card p-4">
+                <h5 class="mb-3">🔧 Tecnología</h5>
+                <ul class="list-unstyled text-start" style="font-size: 0.95rem;">
+                    <li>Django 6.0.4</li>
+                    <li>SQLite / PostgreSQL</li>
+                    <li>Bootstrap 5.3</li>
+                    <li>Python 3.12</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="glass-card p-4">
+                <h5 class="mb-3">🚀 Acceso Rápido</h5>
+                <ul class="list-unstyled text-start" style="font-size: 0.95rem;">
+                    <li><a href="{% url 'admin:index' %}" class="link-primary">Panel Admin</a></li>
+                    <li><a href="{% url 'gestion:lista_autores' %}" class="link-primary">Todos los Autores</a></li>
+                    <li><a href="{% url 'gestion:lista_libros' %}" class="link-primary">Todos los Libros</a></li>
+                    <li><a href="{% url 'gestion:crear_autor' %}" class="link-primary">Nuevo Autor</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .display-4 {
+        background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+</style>
+{% endblock %}

@@ -4,25 +4,20 @@ Este proyecto consiste en el diseño de una aplicación en Django con dos modelo
 
 ---
 
-## 👥 Asignación de Tareas (Equipo de 3)
+## 👥 Asignación de Tareas (Equipo de 2)
 
-### 🛠️ Dev 1: Infraestructura y Modelos (Arquitecto de Datos)
-*   **Paso 1:** Configuración del entorno de desarrollo (Venv, pip).
-*   **Paso 2:** Creación del proyecto Django.
-*   **Paso 3:** Creación de la aplicación `gestion`.
-*   **Paso 4:** Registro de la aplicación en `settings.py`.
-*   **Paso 5:** Diseño de modelos (`Autor` y `Libro`) en `models.py`. Ejecución de migraciones y creación del Superuser.
-*   **Paso 6:** Registro de modelos en `admin.py` con filtros y visualización personalizada.
+### 🛠️ Dev 1: Estructura, Modelos e Interfaz (Arquitecto & Frontend)
+*   **Paso 1-4:** Configuración del entorno, creación del proyecto y la app `gestion`.
+*   **Paso 5:** Diseño de modelos (`Autor` y `Libro`) y ejecución de migraciones.
+*   **Paso 6:** Registro de modelos en el panel `admin.py`.
+*   **Paso 9:** Implementación de Templates HTML (`base.html`, listas y formularios).
+*   **Paso 10:** Mejora visual integral utilizando **Bootstrap** para un diseño premium.
 
-### ⚙️ Dev 2: Lógica de Negocio y Rutas (Desarrollador Backend)
-*   **Paso 7:** Creación de formularios (`forms.py`) para `Autor` y `Libro`.
-*   **Paso 8:** Implementación de las Vistas CRUD (Listar, Crear, Editar, Eliminar) para ambos modelos.
-*   **Paso 8.1:** Configuración de las URLs de la aplicación (`gestion/urls.py`) y enlace con las URLs principales del proyecto.
-
-### 🎨 Dev 3: Interfaz de Usuario y Despliegue (Desarrollador Frontend/DevOps)
-*   **Paso 9:** Implementación de Templates HTML utilizando Herencia de Plantillas (`base.html`).
-*   **Paso 10:** Mejora visual integrando **Bootstrap** para un diseño moderno y responsive.
-*   **Paso 11:** Investigación y configuración para el despliegue (Railway, Render o PythonAnywhere).
+### ⚙️ Dev 2: Lógica de Negocio, Rutas y Despliegue (Backend & DevOps)
+*   **Paso 7:** Creación de formularios (`forms.py`) para los modelos.
+*   **Paso 8:** Implementación de todas las Vistas CRUD (Listar, Crear, Editar, Eliminar).
+*   **Paso 8.1:** Configuración y enlace de todas las URLs del proyecto.
+*   **Paso 11:** Investigación y configuración del despliegue (Railway/Render).
 *   **Finalización:** Generación de `requirements.txt` y `Procfile`.
 
 ---
