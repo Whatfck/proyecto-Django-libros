@@ -1,8 +1,8 @@
 {
   "buildCommand": "cd proyecto && pip install -r requirements.txt && python manage.py migrate --noinput && python manage.py collectstatic --noinput",
-  "outputDirectory": "proyecto",
   "framework": "python",
   "pythonVersion": "3.12",
+  "public": "./proyecto/staticfiles",
   "functions": {
     "proyecto/api/index.py": {
       "runtime": "python3.12"
@@ -11,14 +11,14 @@
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/static/$1",
-      "headers": {
-        "Cache-Control": "max-age=31536000, immutable"
-      }
+      "dest": "/static/$1"
     },
     {
       "src": "/(.*)",
       "dest": "/proyecto/api/index.py"
     }
-  ]
+  ],
+  "env": {
+    "DEBUG": "False"
+  }
 }
