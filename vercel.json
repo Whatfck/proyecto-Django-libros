@@ -1,22 +1,5 @@
 {
-  "buildCommand": "cd proyecto && pip install -r requirements.txt && python manage.py migrate --noinput && python manage.py collectstatic --noinput",
+  "buildCommand": "pip install -r requirements.txt && python proyecto/manage.py migrate --noinput && python proyecto/manage.py collectstatic --noinput",
   "framework": "python",
-  "functions": {
-    "proyecto/api/index.py": {
-      "runtime": "python3.12"
-    }
-  },
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/proyecto/api/index.py"
-    }
-  ],
-  "env": {
-    "DEBUG": "False"
-  }
+  "wsgiFile": "vercel_app.py"
 }
