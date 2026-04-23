@@ -1,5 +1,4 @@
 {
   "buildCommand": "pip install -r requirements.txt && python proyecto/manage.py migrate --noinput && python proyecto/manage.py collectstatic --noinput",
-  "framework": "python",
-  "wsgiFile": "vercel_app.py"
+  "framework": "python"
 }
